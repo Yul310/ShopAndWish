@@ -32,4 +32,4 @@ MongoDB
 
 
 ## Wireframes (the app will look like):
-image/brainStorming/2E7D11CA-7631-4648-83F2-44BD58F7B64E.jpeg
+https://github.com/Yul310/AmazonWishBox/blob/main/image/brainStorming/2E7D11CA-7631-4648-83F2-44BD58F7B64E.jpeg
