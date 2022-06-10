@@ -17,9 +17,9 @@ Moreover, you can check your friends or family members wish list when you have n
 7. You can send the product page link to your friends.(???)<br>
 
 ## Future Promotion
--Sending a recommendation and receiving a recommendation.
+- Sending a recommendation and receiving a recommendation.
 - Adding friends
-- WishShaking: feature that you can check your friend already bought the item or not before you buy a present for him or her.<br>
+- WishShaking: feature that you can check your friend already bought the item or not before you buy a present for him or her.
  The message will be sent anonymously.
 
 
@@ -32,3 +32,4 @@ MongoDB
 
 
 ## Wireframes (the app will look like):
+image/brainStorming/2E7D11CA-7631-4648-83F2-44BD58F7B64E.jpeg
