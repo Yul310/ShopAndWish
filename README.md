@@ -16,7 +16,11 @@ Moreover, you can check your friends or family members wish list when you have n
 6. You can visit your friends wish list.(???) <br>
 7. You can send the product page link to your friends.(???)<br>
 
-
+##Future Promotion
+-Sending a recommendation and receiving a recommendation.
+- Adding friends
+- WishShaking: feature that you can check your friend already bought the item or not before you buy a present for him or her.<br>
+ The message will be sent anonymously.
 
 
 ## Technologies Used:
