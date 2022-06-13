@@ -12,14 +12,19 @@ const productSchema = new Schema({
   image: String,
   price: {
     type:Number,
-    min:0
+    min:0,
+    default:10
   },
   category:{
     type:String
   },
-  rating:{
-      rate:Number,
-      count:Number
+  // rating:{
+  //     rate:Number,
+  //     count:Number
+  // }
+  rating:{Number,  
+  },
+  rating_total:{Number   
   }
  
 });

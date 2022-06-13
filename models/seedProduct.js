@@ -2,15 +2,16 @@
 // Import Dependencies
 ///////////////////////////////////////
 const mongoose = require("./connection");
+const express = require('express')
 const Product = require('./product');
 const db = mongoose.connection;
-
+require('dotenv').config
 
 ///////////////////////////////////////////
 // Seed Code
 ////////////////////////////////////////////
 
-db.on("open", () => {
+db.on("open", (req,res) => {
 
 
   // Run any database queries in this function
@@ -24,65 +25,39 @@ db.on("open", () => {
 
  
   Product.deleteMany({});
-    fetch(`https://fakestoreapi.com/products`)
-    .then((data) => {
-           data.json().then((json) => {
-                Product.create(json)
-                console.log(json);
+    // fetch(`https://fakestoreapi.com/products`)
+    // const requestURL = `https://api.rainforestapi.com/request?api_key=${process.env.AMAZON_BEST_API_KEY}&type=bestsellers&url=https://www.amazon.com/s/zgbs/pc/516866`
+    const requestApplianceURL = `https://api.rainforestapi.com/request?api_key=${process.env.AMAZON_BEST_API_KEY}&type=bestsellers&amazon_domain=amazon.com&category_id=bestsellers_appliances`
+    fetch(requestApplianceURL)
+    .then((apiResponse) => {
+      return apiResponse.json()
+      .then((jsonData) => {
+        // for(i=0;i<jsonData.bestsellers.length;i++)
+        //        { Product.create(jsonData.bestsellers[i])}
+                const amazonData =jsonData.bestsellers;
+                for(i=0;i<amazonData.length;i++){
+                  amazonData[i].price =amazonData[i].price.value;
+                  amazonData[i].category =amazonData[i].current_category.name
+                  Product.create(amazonData[i])
+                 }
+                 
+                console.log(Product);
                 
             })
+      
   
             .catch((error) => {
                       console.log(error);
                       db.close();
                     })
-    })      
+    })   
+    
+    
+
+
+
+
 
 
         })
 
-
-        // app.get("/seed", (req, res) => {
-   
-        //     fetch(`https://fakestoreapi.com/products`)
-        //     .then((response) => {
-        //             response.json().then((data) => {
-        //                 Product.create(data)
-        //                 console.log(data);
-        //                 res.send(data)
-                       
-        //             })
-          
-        //             .catch((error) => {
-        //                       console.log(error);
-        //                       db.close();
-        //                     })
-        //     })      
-        
-        
-        //         })
-
-
-
-
-//   Fruit.deleteMany({})
-//     .then((deletedFruits) => {
-//       // add the starter fruits
-//       Fruit.create(startFruits)
-//         .then((newFruits) => {
-//           // log the new fruits to confirm their creation
-//           console.log(newFruits);
-//           db.close();
-//         })
-//         .catch((error) => {
-//           console.log(error);
-//           db.close();
-//         });
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//       db.close();
-//     });
-
- 
-// });

@@ -7,7 +7,7 @@ const express = require("express")
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const mongoose = require("./models/connection")
-
+// const fetch = require('node-fetch')
 const path = require("path")
 const Product = require('./models/product');
 //Router
@@ -47,11 +47,11 @@ app.listen(PORT, () => {
 
 
 
-
+//seed data testing place
 app.get("/seed", (req, res) => {
-    // let weatherOne = '3d66e1f26639f92a66448326e8180ace'
-    // fetch(`https://api.rainforestapi.com/request?api_key=5064CEDE565549D494603E50C5675DB1&type=product&amazon_domain=amazon.com&asin=B073JYC4XM&output=json&device=desktop&language=en_US&customer_location=gb?limit=20`).then(
-    fetch(`https://fakestoreapi.com/products`).then(
+    
+     const requestURL = `https://api.rainforestapi.com/request?api_key=${process.env.AMAZON_BEST_API_KEY}&type=bestsellers&url=https://www.amazon.com/s/zgbs/pc/516866`
+    fetch(requestURL).then(
         
         (response) => {
 
