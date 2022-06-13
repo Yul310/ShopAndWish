@@ -6,10 +6,18 @@ const { Schema, model } = mongoose;
 const productSchema = new Schema({
   title: {
       type:String,
-    //   required:true
+      required:true
   },
   description: String,
   image: String,
+  rating:{
+    type:Number, 
+    default:0 
+  },
+  ratings_total:{
+    type:Number ,
+    default:0 
+  },
   price: {
     type:Number,
     min:0,
@@ -22,10 +30,7 @@ const productSchema = new Schema({
   //     rate:Number,
   //     count:Number
   // }
-  rating:{Number,  
-  },
-  rating_total:{Number   
-  }
+
  
 });
 

@@ -36,6 +36,7 @@ db.on("open", (req,res) => {
         //        { Product.create(jsonData.bestsellers[i])}
                 const amazonData =jsonData.bestsellers;
                 for(i=0;i<amazonData.length;i++){
+                  amazonData[i].description = amazonData[i].link;
                   amazonData[i].price =amazonData[i].price.value;
                   amazonData[i].category =amazonData[i].current_category.name
                   Product.create(amazonData[i])

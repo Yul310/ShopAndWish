@@ -6,12 +6,12 @@
           <img src="{{ product.image }}" alt="{{ product.title }}">
           <h2> {{ product.title }} </h2>
           <h4> 
-            Description:   {{ product.description }} <br>
+            Description: <a href=" {{ product.description }}">link to Amazon website</a> <br>
             Price:   {{ product.price }}<br>
-          
+            rating: {{ product.rating }}
           </h4>
             
-          
+
           
 <!--           
           <a href="/products/{{ product._id }}/edit"><button>Edit</button></a> 
