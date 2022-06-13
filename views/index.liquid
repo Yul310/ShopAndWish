@@ -1,21 +1,27 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
-  <nav>
-  <a href="/products/new"><button>Create A New Product</button></a>
+
+  <!-- navigation items -->
+  <nav class="nav">
+    <a id="myInfo" href="/products/myInfo"><button>My Info</button></a>
+    <a class="wishlist" href="/products/wishlists"><button>WishList</button></a>
+  <a class="cartIcon" href="/products/carts"><button>Cart</button></a>
   </nav>
+  <!-- product links -->
+  <div class ="catalogue">
   {% for product in products %}
-  <article>
+  
     <div class="products">
    
       <a href="/products/{{product._id}}">
         
-          <img src="{{product.image}}" alt="{{product.title}} image" class="image-link" width="150px" height="150px">
+          <img class="productImage"src="{{product.image}}" alt="{{product.title}} image" class="image-link" width="150px" height="150px">
         
-          <h2>{{product.title}} </h2>
+          <p class = "productTitle">{{product.title}} </p>
          
       </a>
 
-      <h4>Price: {{product.price}} </h4>
+      <h4 class ="productPrice">Price: {{product.price}} </h4>
 
       <!-- <h4>
         {% if product.qty == 0 %}
@@ -29,6 +35,6 @@
     
   </article>
   {% endfor %}
-
+</div>
 </div>
 {% endblock %}

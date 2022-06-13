@@ -49,8 +49,8 @@ app.listen(PORT, () => {
 
 
 app.get("/seed", (req, res) => {
-    let weatherOne = '3d66e1f26639f92a66448326e8180ace'
-    // fetch(`api.openweathermap.org/data/2.5/weather?zip=${ZIP CODE},us&units=imperial&appid=${weatherOne}`).then(
+    // let weatherOne = '3d66e1f26639f92a66448326e8180ace'
+    // fetch(`https://api.rainforestapi.com/request?api_key=5064CEDE565549D494603E50C5675DB1&type=product&amazon_domain=amazon.com&asin=B073JYC4XM&output=json&device=desktop&language=en_US&customer_location=gb?limit=20`).then(
     fetch(`https://fakestoreapi.com/products`).then(
         
         (response) => {

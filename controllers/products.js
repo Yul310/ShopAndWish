@@ -27,14 +27,28 @@ router.get("/", (req, res) => {
       res.render("index", { products });
       console.log(products)
     })
-    
     .catch((error) => {
       res.json({ error });
     });
 });
 
+//////////////////////////////////////////////
+// Show Route
+//////////////////////////////////////////////
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
 
-//
+  Product.findById(id)
+    
+    .then((product) => {
+      res.render("show", { product });
+      
+    })
+    .catch((error) => {
+      res.json({ error });
+    });
+});
+
 
 //////////////////////////////////////////
 // Export the Router

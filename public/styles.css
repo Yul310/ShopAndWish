@@ -1,24 +1,40 @@
-body{
 
+body{
+    margin: 10px 20px auto;
+}
+nav{
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
+    align-items: flex-end;
     
-    align-items: center;
+}
+#myInfo{
+    align-self:flex-start;
+    order:3
 }
 
+.catalogue{
+    /* height:2000px;
+    width:1200px; */
+    /*display: grid;
+    grid-template-columns: 30% 30% 30% ;
+    grid-template-rows: 50% 50%; */
+    display: flex;
+    justify-content:flex-start;
+    flex-direction:row;
+    flex-wrap:wrap;
+   
+}
 
 h1{
     text-align: center;
     
 }
 button{
-    margin: 10px 10px auto;
+    margin: 5px 5px auto;
 }
-.article{
-    width:70%;
-    
-    margin:50px 50px auto;
-    
+.productTitle{
+    font-size:large;
 }
 
 .products{
