@@ -1,4 +1,4 @@
-# AmazonWishbox
+# ShopAndWish
 To check this app follow the link below:
 http// not yet/placeholder
 
@@ -15,6 +15,7 @@ Moreover, you can check your friends or family members wish list when you have n
 5. You can add your friends or family members to friends list(???)<br>
 6. You can visit your friends wish list.(???) <br>
 7. You can send the product page link to your friends.(???)<br>
+8. Before buying a present which is in your friend's wish list, you can send a anonymous message saying that "somebody is about to send you the product"
 
 ## Future Promotion
 - Sending a recommendation and receiving a recommendation.
