@@ -1,14 +1,9 @@
 const express = require("express"); // import express
 const Product = require('../models/product');
-
-
-
-
-
-/////////////////////////////////////////
-// Create Route
-/////////////////////////////////////////
 const router = express.Router();
+
+
+
 
 /////////////////////////////////////////
 // Routes
