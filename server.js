@@ -12,7 +12,7 @@ const path = require("path")
 const Product = require('./models/product');
 //Router
 const ProductRouter = require("./controllers/products")
-
+const reviewsRouter = require('./controllers/reviews');
 // const weatherAlarmRouter = require("./controller/weatherAlarms")
 
 
@@ -33,6 +33,7 @@ app.use(methodOverride("_method")); // override for put and delete requests from
 app.use(express.urlencoded({ extended: true })); // parse urlencoded request bodies
 app.use(express.static("public")); // serve files from public statically
 app.use("/products",ProductRouter)
+app.use('/', reviewsRouter);
 // app.use("/seed",SeedRouter)
 
 //////////////////////////////////////////////
@@ -48,20 +49,20 @@ app.listen(PORT, () => {
 
 
 //seed data testing place
-app.get("/seed", (req, res) => {
+// app.get("/seed", (req, res) => {
     
-     const requestURL = `https://api.rainforestapi.com/request?api_key=${process.env.AMAZON_BEST_API_KEY}&type=bestsellers&url=https://www.amazon.com/s/zgbs/pc/516866`
-    fetch(requestURL).then(
+//      const requestURL = `https://api.rainforestapi.com/request?api_key=${process.env.AMAZON_BEST_API_KEY}&type=bestsellers&url=https://www.amazon.com/s/zgbs/pc/516866`
+//     fetch(requestURL).then(
         
-        (response) => {
+//         (response) => {
 
-            response.json().then((data) => {
+//             response.json().then((data) => {
 
-                res.send(data)
-                console.log(data.results);
+//                 res.send(data)
+//                 console.log(data.results);
 
-            })
-        }
+//             })
+//         }
 
-    )
-})
+//     )
+// })

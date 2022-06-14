@@ -33,6 +33,29 @@ router.get("/", (req, res) => {
 });
 
 //////////////////////////////////////////////
+// Add Review Route
+//////////////////////////////////////////////
+// router.post("/:id/reviews", (req, res) => {
+//   console.log("working")
+//   res.send("working")
+//   Product.findById(req.params.id)
+//   .then((product)=>{
+//     product.reviews.push(req.body);
+//     product.save();
+//     res.redirect(`/products/${product._id}`);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//     res.json({ error });
+//   });
+  
+ 
+
+// })
+
+
+
+//////////////////////////////////////////////
 // Show Route
 //////////////////////////////////////////////
 router.get("/:id", (req, res) => {
@@ -48,6 +71,7 @@ router.get("/:id", (req, res) => {
       res.json({ error });
     });
 });
+
 
 
 //////////////////////////////////////////

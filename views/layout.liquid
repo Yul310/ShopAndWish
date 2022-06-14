@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shop & Wish</title>
-    <!-- Milligram CSS for Some Default Styling -->
-    <!-- Google Fonts -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
-    />
 
-    <!-- CSS Reset -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop & Wish</title>
+  <!-- Milligram CSS for Some Default Styling -->
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
 
-    <!-- Milligram CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
-    />
+  <!-- CSS Reset -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
 
-    <!-- Jquery -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
+  <!-- Milligram CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
 
-    <!-- OUR CSS AND JS -->
-    <link rel="stylesheet" href="/styles.css" />
-    <script src="/app.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <h1>Shop & Wish</h1>
-    </header>
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <main>{% block content %}My default content{% endblock %}</main>
+  <!-- OUR CSS AND JS -->
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/server.js" defer></script>
+</head>
 
-    <footer></footer>
-  </body>
+<body>
+  <header>
+    <h1>Shop & Wish</h1>
+  </header>
+  <!-- navigation items -->
+  <nav id="nav">
+    <a id="myInfo" href="/products/myInfo"><button>My Info</button></a>
+    <div class="navR">
+      <a class="wishlist" href="/products/wishlists"><button>WishList</button></a>
+      <a class="cartIcon" href="/products/carts"><button>Cart</button></a>
+    </div>
+  </nav>
+
+  <main>{% block content %}My default content{% endblock %}</main>
+
+  <footer></footer>
+</body>
+
 </html>

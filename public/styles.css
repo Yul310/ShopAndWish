@@ -1,16 +1,18 @@
 
 body{
     margin: 10px 20px auto;
-}
-nav{
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-end;
     
 }
+#nav{
+    display: flex;
+    justify-content:space-between;
+    margin:10px auto;
+    
+
+}
 #myInfo{
-    align-self:flex-start;
-    order:3
+   justify-self: flex-start;
+   
 }
 
 .catalogue{
@@ -51,3 +53,18 @@ button{
     
     text-align:center;
 }
+
+
+
+#addReview {
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+  
+  #addReview input[type="submit"] {
+    width: 8rem;
+    grid-column: 2 / 3;
+    margin-bottom: 2rem;
+  }

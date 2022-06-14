@@ -32,8 +32,7 @@ db.on("open", (req,res) => {
     .then((apiResponse) => {
       return apiResponse.json()
       .then((jsonData) => {
-        // for(i=0;i<jsonData.bestsellers.length;i++)
-        //        { Product.create(jsonData.bestsellers[i])}
+        // From the complicate Amazon API, I had to extract information I need and change the name of fields.
                 const amazonData =jsonData.bestsellers;
                 for(i=0;i<amazonData.length;i++){
                   amazonData[i].description = amazonData[i].link;
