@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true })); // parse urlencoded request bod
 app.use(express.static("public")); // serve files from public statically
 app.use("/products",ProductRouter)
 app.use('/', reviewsRouter);
-// app.use("/seed",SeedRouter)
+
 
 //////////////////////////////////////////////
 // Server Listener

@@ -2,9 +2,9 @@ const Product = require('../models/product');
 const express = require('express');
 const router = express.Router();
 router.post('/products/:id/reviews', create);
-module.exports = {
-    create
-  };
+// module.exports = {
+//     create
+//   };
 
 
   function create(req, res) {

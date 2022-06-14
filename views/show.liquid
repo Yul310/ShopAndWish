@@ -20,21 +20,29 @@
                     <th>Rating</th>
                   </tr>
                 </thead>
+                {% if product.reviews.length == 0 %}
+                <tr>
+                    <td>
+                No datayet. Please add your review.
+            </td>
+        </tr>
+                {% else %}
                 {% for review in product.reviews %}
                 <tbody>
                     <tr>
-                        <td>{{ review.createdAt.toLocaleDateString}}</td>
-                        <td>{{ review.content}}</td>
-                        <td>{{ review.rating}}</td>
+                        <td>
+                            
+                            {{ review.createdAt.toLocaleDateString}}
+                        
+                        </td>
+                        <td>{{ review.content }}</td>
+                        <td>{{ review.rating }}</td>
                       </tr>
                     </tbody>
                     {% endfor %}
+                    {% endif %}
                 </table>
 
-<!--             
-            {{ review.date}}<br>
-           {{ review.content}}<br>
-           {{ review.rating}}<br> -->
           
         </h4>
 
