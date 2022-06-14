@@ -56,6 +56,8 @@ router.post("/login", async (req, res) => {
           // compare password
           const result = await bcrypt.compare(password, user.password);
           if (result) {
+            req.session.username = username;
+            req.session.loggedIn = true;
             // redirect to fruits page if successful
             res.redirect("/products");
           } else {
@@ -75,6 +77,14 @@ router.post("/login", async (req, res) => {
   });
   
 
+
+  router.get("/logout", (req, res) => {
+    // destroy session and redirect to main page
+    req.session.destroy((err) => {
+      res.redirect("/");
+    });
+  });
+  
 
   
 

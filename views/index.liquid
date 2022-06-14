@@ -1,8 +1,13 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
   <div>
+    {% if  req.session.loggedIn == false %}
     <a href="/users/signup"><button>Signup</button></a>
     <a href="/users/login"><button>Login</button></a>
+    {% else %}
+    <a href="/user/logout"><button>Logout</button></a>
+    {% endif%}
+
   </div>
 
   <!-- product links -->

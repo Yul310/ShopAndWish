@@ -9,9 +9,11 @@ router.post('/products/:id/reviews', create);
 
   function create(req, res) {
     Product.findById(req.params.id, function(err, product) {
+    req.body.username = req.session.username;
      product.reviews.push(req.body);
       product.save(function(err) {
         res.redirect(`/products/${product._id}`);
+
       });
     });
   }

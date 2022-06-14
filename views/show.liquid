@@ -16,6 +16,7 @@
                 <thead>
                   <tr>
                     <th>Date</th>
+                    <th>User</th>
                     <th>Review</th>
                     <th>Rating</th>
                   </tr>
@@ -35,6 +36,7 @@
                             {{ review.createdAt.toLocaleDateString}}
                         
                         </td>
+                        <td>{{ review.username }}</td>
                         <td>{{ review.content }}</td>
                         <td>{{ review.rating }}</td>
                       </tr>

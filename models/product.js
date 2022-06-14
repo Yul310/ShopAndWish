@@ -6,7 +6,8 @@ const { Schema, model } = mongoose;
 const reviewSchema = new Schema({
   content:String
  ,
-  rating: {type: Number, min: 1, max: 5, default: 2.5}
+  rating: {type: Number, min: 1, max: 5, default: 2.5},
+  username:String
 }, {
   timestamps: true
 });

@@ -10,6 +10,8 @@ const mongoose = require("./models/connection")
 // const fetch = require('node-fetch')
 const path = require("path")
 const Product = require('./models/product')
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 //Router
 const ProductRouter = require("./controllers/products")
 const reviewsRouter = require('./controllers/reviews')
@@ -33,6 +35,15 @@ app.use(morgan("tiny")); //logging
 app.use(methodOverride("_method")); // override for put and delete requests from forms
 app.use(express.urlencoded({ extended: true })); // parse urlencoded request bodies
 app.use(express.static("public")); // serve files from public statically
+// middleware to setup session
+app.use(
+    session({
+      secret: process.env.SECRET,
+      store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
+      saveUninitialized: true,
+      resave: false,
+    })
+  );
 
 /////////////////////////////////////////////////////
 // Routes
