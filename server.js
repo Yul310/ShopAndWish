@@ -2,17 +2,18 @@
 // Import Our Dependencies
 /////////////////////////////////////////////
 
-require("dotenv").config();
+require("dotenv").config()
 const express = require("express")
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const mongoose = require("./models/connection")
 // const fetch = require('node-fetch')
 const path = require("path")
-const Product = require('./models/product');
+const Product = require('./models/product')
 //Router
 const ProductRouter = require("./controllers/products")
-const reviewsRouter = require('./controllers/reviews');
+const reviewsRouter = require('./controllers/reviews')
+const UserRouter = require("./controllers/users")
 // const weatherAlarmRouter = require("./controller/weatherAlarms")
 
 
@@ -32,10 +33,17 @@ app.use(morgan("tiny")); //logging
 app.use(methodOverride("_method")); // override for put and delete requests from forms
 app.use(express.urlencoded({ extended: true })); // parse urlencoded request bodies
 app.use(express.static("public")); // serve files from public statically
+
+/////////////////////////////////////////////////////
+// Routes
+/////////////////////////////////////////////////////
 app.use("/products",ProductRouter)
 app.use('/', reviewsRouter);
-
-
+app.use("/users", UserRouter);
+app.get("/", (req, res) => {
+    res.render("index.liquid");
+  });
+  
 //////////////////////////////////////////////
 // Server Listener
 //////////////////////////////////////////////
