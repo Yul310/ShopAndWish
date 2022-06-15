@@ -27,13 +27,26 @@
 
 <body>
   <header>
+    <a href="/products">
     <h1>Shop & Wish</h1>
+  </a>
   </header>
   <!-- navigation items -->
   <nav id="nav">
-    <a id="myInfo" href="/products/myInfo"><button>My Info</button></a>
+
+    <div class="navL">
+    {% if logged == true %}
+    <a class="leftNav" href="/products/myInfo"><button>My Info</button></a>
+    <a href="/users/logout"><button>Logout</button></a>
+    {%else%}
+    <a href="/users/signup"><button>Signup</button></a>
+    <a href="/users/login"><button>Login</button></a>
+    {% endif%}
+  </div>
     <div class="navR">
-      <a class="wishlist" href="/products/wishlists"><button>WishList</button></a>
+      {% if logged == true %}
+      <a class="leftNav" href="/products/wishlists"><button>WishList</button></a>
+      {% endif%}
       <a class="cartIcon" href="/products/{{product.id}}/cart"><button>Cart</button></a>
     </div>
   </nav>

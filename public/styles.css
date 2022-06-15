@@ -5,13 +5,19 @@ body{
 }
 #nav{
     display: flex;
+    /* flex-direction: row-reverse; */
     justify-content:space-between;
     margin:10px auto;
     
 
 }
-#myInfo{
-   justify-self: flex-start;
+.navL{
+    justify-self: flex-start;
+    
+ }
+ 
+.navR{
+   justify-self: flex-end;
    
 }
 
