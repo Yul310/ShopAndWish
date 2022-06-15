@@ -39,6 +39,7 @@ router.post("/signup", async (req, res) => {
   });
 
 
+  
 
 // The login Routes (Get => form, post => submit form)
 router.get("/login", (req, res) => {
@@ -78,13 +79,15 @@ router.post("/login", async (req, res) => {
   
 
 
-  router.get("/logout", (req, res) => {
+  router.get("/logout",(req, res) => {
     // destroy session and redirect to main page
+    
     req.session.destroy((err) => {
-      res.redirect("/");
+      res.redirect("/products");
+      
     });
+    
   });
-  
 
   
 

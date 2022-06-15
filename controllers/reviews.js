@@ -14,12 +14,15 @@ router.post('/products/:id/reviews', create);
 
 function create(req, res) {
   Product.findById(req.params.id, function (err, product) {
-    req.body.username = req.session.username;
-    product.reviews.push(req.body);
-    product.save(function (err) {
-      res.redirect(`/products/${product._id}`);
-
-    });
+    if (req.session.loggedIn) {
+      req.body.username = req.session.username;
+      product.reviews.push(req.body);
+      product.save(function (err) {
+        res.redirect(`/products/${product._id}`);
+      })
+    } else {
+      res.redirect('/users/login')
+    };
   });
 }
 
@@ -28,7 +31,8 @@ function create(req, res) {
 ////////////////////
 
 router.get("/products/:id/reviews/:reviewId/edit", (req, res) => {
-  console.log("working")
+
+  // if (req.session.username === req.body.username){
   const id = req.params.id;
   const rid = req.params.reviewId;
 
@@ -36,11 +40,14 @@ router.get("/products/:id/reviews/:reviewId/edit", (req, res) => {
   Product.findById(id)
 
     .then((product) => {
-      console.log('working')
       console.log(product.reviews.find(review => review._id == rid))
       // I had a hard time finding the review in the array.
       const review = product.reviews.find(review => review._id == rid)
-      res.render("edit", { product, review });
+      if (req.session.username === review.username) {
+        console.log(req.session.username)
+        console.log(review.username)
+        res.render("edit", { product, review });
+      }
     })
 
     .catch((error) => {
@@ -56,14 +63,13 @@ router.put("/products/:id/reviews/:reviewId/edit", (req, res) => {
   // get the id from params
   const id = req.params.id;
   const rid = req.params.reviewId;
+  // get the data from the request body
   Product.findById(id)
     .then((product) => {
       console.log(req.body)
       // console.log(product)
+      //find the review in the array and update it
       const review = product.reviews.find(review => review._id == rid)
-
-      // review.save(req.body)
-      //  product.reviews.findOneAndUpdate(review => review._id == rid,req.body)
       review.content = req.body.content;
       review.rating = req.body.rating;
       console.log(review)
@@ -91,16 +97,7 @@ router.put("/products/:id/reviews/:reviewId/edit", (req, res) => {
 
 
 
-// function edit(req, res) {
-//   Product.findById(req.params.id, function(err, product) {
-//   req.body.username = req.session.username;
-//    product.reviews.push(req.body);
-//     product.save(function(err) {
-//       res.redirect(`/products/${product._id}`);
 
-//     });
-//   });
-// }
 
 
 module.exports = router;

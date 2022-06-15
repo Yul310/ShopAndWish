@@ -50,7 +50,7 @@ app.use(
 /////////////////////////////////////////////////////
 app.use("/products",ProductRouter)
 app.use('/', reviewsRouter);
-app.use("/users", UserRouter);
+app.use("/users",UserRouter);
 app.get("/", (req, res) => {
     res.render("index.liquid");
   });

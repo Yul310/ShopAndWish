@@ -15,13 +15,15 @@ const router = express.Router();
 // Router Middleware
 ////////////////////////////////////////
 // Authorization Middleware
-router.use((req, res, next) => {
-  if (req.session.loggedIn) {
-    next();
-  } else {
-    res.redirect("/users/login");
-  }
-});
+// router.use((req, res, next) => {
+//   if (req.session.loggedIn) {
+//     next();
+
+
+//   } else {
+//     res.redirect("/users/login");
+//   }
+// });
 
 
 //////////////////////////////////////////////
