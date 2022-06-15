@@ -64,7 +64,12 @@
     <!-- review button -->
     <form id="addReview" action="/products/{{ product._id }}/reviews" method="POST">
       <label>Review:</label>
+      {% if logged == true %}
       <textarea name="content" placeholder="Leave your review here"></textarea>
+      {%else%}
+      <textarea name="content" placeholder="Please log-In to leave your review."></textarea>
+      {% endif%}
+
       <label>Rating:</label>
       <select name="rating">
         <option value="1">1</option>
@@ -74,8 +79,13 @@
         <option value="5" selected>5</option>
       </select>
 
-      <!-- <input type="text" value = "review" placeholder="Add your review"> -->
+     
       <input id="addReview" type="submit" value="Add review" />
+      
+
+
+
+      
 
     </form>
     <a href="/products/{{product.id}}/cart"><button>add to cart</button></a>

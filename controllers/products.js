@@ -5,6 +5,7 @@ const express = require("express"); // import express
 const Product = require('../models/product');
 
 const Cart = require('../models/cart');
+const User = require("../models/user");
 
 
 /////////////////////////////////////////
@@ -16,16 +17,16 @@ const router = express.Router();
 // Router Middleware
 ////////////////////////////////////////
 // Authorization Middleware
-router.use((req, res, next) => {
-  if (req.session.loggedIn) {
-    next();
+// router.use((req, res, next) => {
+//   if (req.session.loggedIn) {
+//     next();
    
 
-  } else {
-    // res.redirect("/users/login");
+//   } else {
+//     res.redirect("/users/login");
    
-  }
-});
+//   }
+// });
 
 
 //////////////////////////////////////////////
@@ -33,10 +34,10 @@ router.use((req, res, next) => {
 //////////////////////////////////////////////
 router.get("/", (req, res) => {
   console.log("working")
+  const logged =req.session.loggedIn;
   Product.find({})
-    
     .then((products) => {
-      res.render("index", { products });
+      res.render("index", { products,logged });
       console.log(products)
     })
     .catch((error) => {
@@ -72,11 +73,11 @@ router.get("/", (req, res) => {
 //////////////////////////////////////////////
 router.get("/:id", (req, res) => {
   const id = req.params.id;
- 
+  const logged =req.session.loggedIn;
   Product.findById(id)
     
     .then((product) => {
-      res.render("show", { product });
+      res.render("show", { product,logged });
      
     })
     .catch((error) => {
@@ -88,19 +89,22 @@ router.get("/:id", (req, res) => {
 // Cart Route
 //////////////////////////////////////////////
 
-router.get("/:id/cart", (req,res) => {
-  const productId = req.params.id;
-  const cart = new Cart(req.session.cart ? req.session.cart :{})
-  Product.findById(productId, function(err, product) {
-    if (err) {
-      return res.redirect('/');
-    }
-    cart.add(product,product._id)
-    req.session.cart = cart;
-    console.log(req.session.cart)
-    res.redirect('/')
-  })
-})
+// router.get("/:id/cart", (req,res) => {
+//   const Id = req.params.id;
+//   // const cart = new Cart(req.session.cart ? req.session.cart :{})
+//   Product.findById(Id, function(err, product) {
+    
+//     User.cart.append(product._id)
+//     // req.session.cart = cart;
+//     // console.log(req.session.cart)
+//   console.log(user)
+    
+//   })
+
+//   .catch((error) => {
+//     res.json({ error });
+//   });
+// })
 
 
 

@@ -1,7 +1,7 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
   <div>
-    {% if req.session.loggedIn == true %}
+    {% if logged == true %}
     <a href="/users/logout"><button>Logout</button></a>
     {%else%}
     <a href="/users/signup"><button>Signup</button></a>

@@ -48,7 +48,7 @@ const productSchema = new Schema({
 
 });
 
-// make Vampire model
+
 const Product = model("Product", productSchema);
 
 ///////////////////////////////////////////////////

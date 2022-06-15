@@ -10,6 +10,7 @@ const mongoose = require("./models/connection")
 // const fetch = require('node-fetch')
 const path = require("path")
 const Product = require('./models/product')
+const Cart = require('./models/cart');
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 //Router
@@ -42,6 +43,7 @@ app.use(
       store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
       saveUninitialized: true,
       resave: false,
+      
     })
   );
 
