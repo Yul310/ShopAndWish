@@ -66,7 +66,7 @@ router.put("/products/:id/reviews/:reviewId/edit", (req, res) => {
   // get the data from the request body
   Product.findById(id)
     .then((product) => {
-      console.log(req.body)
+      // console.log(req.body)
       // console.log(product)
       //find the review in the array and update it
       const review = product.reviews.find(review => review._id == rid)
@@ -74,6 +74,7 @@ router.put("/products/:id/reviews/:reviewId/edit", (req, res) => {
       review.rating = req.body.rating;
       console.log(review)
       console.log(product)
+     
       product.save(err => {
         if (err) {
           console.log(err);
@@ -94,6 +95,48 @@ router.put("/products/:id/reviews/:reviewId/edit", (req, res) => {
 
 
 
+
+////////////////////
+//Review Delete Route
+////////////////////
+
+router.delete("/products/:id/reviews/:reviewId", (req, res) => {
+ // get the id from params
+ const id = req.params.id;
+ const rid = req.params.reviewId;
+ console.log("working")
+ Product.findById(id)
+ .then((product) => {
+   // console.log(req.body)
+   // console.log(product)
+   //find the review in the array and update it
+   const review = product.reviews.find(review => review._id == rid)
+   console.log(review._id)
+   review.remove()
+   console.log(product)
+   product.save(err => {
+    if (err) {
+      console.log(err);
+    }
+  })
+
+ })
+ .then((product) => {
+  // redirect to main page after updating
+  res.redirect(`/products/${req.params.id}`)
+  // res.redirect("/products/62a7e10c43da5dc9301bc1fb");
+})
+// send error as json
+.catch((error) => {
+  console.log(error);
+  res.json({ error });
+});
+
+
+
+
+
+});
 
 
 

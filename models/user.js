@@ -14,7 +14,8 @@ const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   cart: {type:Array},
-  wishList: {type:Array}
+  wishList: {type:Array},
+  loggedIn: {type:Boolean, default:false}
 });
 
 // make fruit model

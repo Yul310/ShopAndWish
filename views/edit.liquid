@@ -1,35 +1,46 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
     <article>
-        
-                        
-                     
+
+
+
         {{ product.title}}
         <!-- review button -->
-        <form id="addReview" action="/products/{{ product._id }}/reviews/{{ review._id }}/edit?_method=PUT" method="POST">
+        <form id="addReview" action="/products/{{ product._id }}/reviews/{{ review._id }}/edit?_method=PUT"
+            method="POST">
 
-            <label >{{ review.username }}</label><br>
-            
+            <label>{{ review.username }}</label><br>
+
             <label>Review:</label><br>
-            <textarea name="content" placeholder ={{ review.content }}></textarea><br>
+            <textarea name="content" placeholder={{ review.content }}></textarea><br>
             <label>Rating:</label><br>
             <select name="rating">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5" selected>5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
             </select>
 
             <!-- <input type="text" value = "review" placeholder="Add your review"> -->
-            <input id="addReview" type="submit" value="Edit" /> 
+            <input id="addReview" type="submit" value="Edit" />
 
         </form>
 
-         <!-- Add to cart button -->
+
+        <!-- Delete my review -->
+        <form action="/products/{{ product._id }}/reviews/{{ review._id }}?_method=DELETE" method="POST">
+            <input type="submit" value="Delete" />
+        </form>
+
+
+        <!-- Add to cart button -->
         <form id="addReview" action="/products/{{ product._id }}/reviews" method="POST">
 
-        <a href="/products/cart"><button>Go to Your Cart</button></a>
+            <a href="/products/cart"><button>Go to Your Cart</button></a>
+        </form>
+
+
     </article>
 </div>
 {% endblock %}

@@ -59,6 +59,7 @@ router.post("/login", async (req, res) => {
           if (result) {
             req.session.username = username;
             req.session.loggedIn = true;
+           
             // redirect to fruits page if successful
             res.redirect("/products");
           } else {
@@ -81,7 +82,7 @@ router.post("/login", async (req, res) => {
 
   router.get("/logout",(req, res) => {
     // destroy session and redirect to main page
-    
+    console.log(req.session.username)
     req.session.destroy((err) => {
       res.redirect("/products");
       req.session.loggedIn = false;
