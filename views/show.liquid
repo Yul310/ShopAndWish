@@ -1,57 +1,58 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
-    <article>
+  <article>
+    <img src="{{ product.image }}" alt="{{ product.title }}">
+    <h2> {{ product.title }} </h2>
+    <h4>
+        Description: <a href=" {{ product.description }}">link to Amazon website</a> <br>
+        Price: {{ product.price }}<br>
+        rating: {{ product.rating }}<br>
+        ratings_total: {{ product.ratings_total }}<br>
+        reviews:<br>
 
 
-        <img src="{{ product.image }}" alt="{{ product.title }}">
-        <h2> {{ product.title }} </h2>
-        <h4>
-            Description: <a href=" {{ product.description }}">link to Amazon website</a> <br>
-            Price: {{ product.price }}<br>
-            rating: {{ product.rating }}<br>
-            ratings_total: {{ product.ratings_total }}<br>
-            reviews:<br>
-            
-            <table>
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>User</th>
-                    <th>Review</th>
-                    <th>Rating</th>
-                  </tr>
-                </thead>
-                {% if product.reviews.length == 0 %}
-                <tr>
-                    <td>
-                No datayet. Please add your review.
-            </td>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>User</th>
+          <th>Review</th>
+          <th>Rating</th>
+          <th>Edit</th>
         </tr>
-                {% else %}
-                {% for review in product.reviews %}
-                <tbody>
-                    <tr>
-                        <td>
-                            
-                            {{ review.createdAt.toLocaleDateString}}
-                        
-                        </td>
-                        <td>{{ review.username }}</td>
-                        <td>{{ review.content }}</td>
-                        <td>{{ review.rating }}</td>
-                      </tr>
-                    </tbody>
-                    {% endfor %}
-                    {% endif %}
-                </table>
+      </thead>
+      {% if product.reviews.length == 0 %}
+      <tr>
+        <td>
+          No datayet. Please add your review.
+        </td>
+      </tr>
+      {% else %}
+      {% for review in product.reviews %}
+      <tbody>
+        <tr>
+          <td>
 
-          
-        </h4>
+            {{ review.createdAt.toLocaleDateString}}
+
+          </td>
+          <td>{{ review.username }}</td>
+          <td>{{ review.content }}</td>
+          <td>{{ review.rating }}</td>
+          <td><a href="/products/{{ product._id}}/reviews/{{review._id}}/edit"><button>Edit</button></a></td>
+        </tr>
+      </tbody>
+      {% endfor %}
+      {% endif %}
+    </table>
+
+
+    </h4>
 
 
 
 
-        <!-- <a href="/products/{{ product._id }}/edit"><button>Edit</button></a> 
+    <!-- <a href="/products/{{ product._id }}/edit"><button>Edit</button></a> 
 
           
         <form action="/products/{{ product._id }}?_method=DELETE" method="POST">
@@ -60,25 +61,25 @@
           
         </form> -->
 
-        <!-- review button -->
-        <form id="addReview" action="/products/{{ product._id }}/reviews" method="POST">
-            <label>Review:</label>
-            <textarea name="content" placeholder="Leave your review here"></textarea>
-            <label>Rating:</label>
-            <select name="rating">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5" selected>5</option>
-            </select>
+    <!-- review button -->
+    <form id="addReview" action="/products/{{ product._id }}/reviews" method="POST">
+      <label>Review:</label>
+      <textarea name="content" placeholder="Leave your review here"></textarea>
+      <label>Rating:</label>
+      <select name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+      </select>
 
-            <!-- <input type="text" value = "review" placeholder="Add your review"> -->
-            <input id="addReview" type="submit" value="Add review" /> 
+      <!-- <input type="text" value = "review" placeholder="Add your review"> -->
+      <input id="addReview" type="submit" value="Add review" />
 
-        </form>
+    </form>
 
-        <a href="/products/"><button>Back to Main</button></a>
-    </article>
+    <a href="/products/"><button>Back to Main</button></a>
+  </article>
 </div>
 {% endblock %}
