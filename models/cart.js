@@ -1,7 +1,11 @@
-module.exports = function Cart(initItems) {
-    this.items = initItems;
-    this.totalQty = 0;
-    this.totalPrice = 0;
+
+//////////////////////////////////////////
+///Shopping cart class
+/////////////////////////////////////////
+module.exports = function Cart(oldCart) {
+    this.items = oldCart.items ||{};
+    this.totalQty = oldCart.totalQty || 0;
+    this.totalPrice = oldCart.totalPrice || 0;
 
 
 
@@ -13,5 +17,16 @@ module.exports = function Cart(initItems) {
         }
         storedItem.qty++;
         storedItem.price = storedItem.item.price*storedItem.qty;
+        this.totalQty++
+        this.totalPrice += storedItem.item.price
     }
+
+        this.generateArray = function(){
+            let arr = [];
+            for(let id in this.items){
+                arr.push(this.items[id])
+            }
+         return arr;
+        }
+
 }

@@ -1,12 +1,11 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
   <div>
-    {% if  req.session.loggedIn == true %}
+    {% if req.session.loggedIn == true %}
     <a href="/users/logout"><button>Logout</button></a>
-    {% else %}
+    {%else%}
     <a href="/users/signup"><button>Signup</button></a>
     <a href="/users/login"><button>Login</button></a>
-   
     {% endif%}
 
   </div>

@@ -4,6 +4,7 @@
 const express = require("express"); // import express
 const Product = require('../models/product');
 
+const Cart = require('../models/cart');
 
 
 /////////////////////////////////////////
@@ -15,15 +16,16 @@ const router = express.Router();
 // Router Middleware
 ////////////////////////////////////////
 // Authorization Middleware
-// router.use((req, res, next) => {
-//   if (req.session.loggedIn) {
-//     next();
+router.use((req, res, next) => {
+  if (req.session.loggedIn) {
+    next();
+   
 
-
-//   } else {
-//     res.redirect("/users/login");
-//   }
-// });
+  } else {
+    // res.redirect("/users/login");
+   
+  }
+});
 
 
 //////////////////////////////////////////////
@@ -70,17 +72,38 @@ router.get("/", (req, res) => {
 //////////////////////////////////////////////
 router.get("/:id", (req, res) => {
   const id = req.params.id;
-
+ 
   Product.findById(id)
     
     .then((product) => {
       res.render("show", { product });
-      
+     
     })
     .catch((error) => {
       res.json({ error });
     });
 });
+
+//////////////////////////////////////////////
+// Cart Route
+//////////////////////////////////////////////
+
+router.get("/:id/cart", (req,res) => {
+  const productId = req.params.id;
+  const cart = new Cart(req.session.cart ? req.session.cart :{})
+  Product.findById(productId, function(err, product) {
+    if (err) {
+      return res.redirect('/');
+    }
+    cart.add(product,product._id)
+    req.session.cart = cart;
+    console.log(req.session.cart)
+    res.redirect('/')
+  })
+})
+
+
+
 
 
 
