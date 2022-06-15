@@ -1,9 +1,9 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
   <div>
-    {% if res.locals.user == req.session.user %}
+    {% if req.session.loggedIn == true %}
     <a href="/users/logout"><button>Logout</button></a>
-    {% elsif res.locals.user.type == null%}
+    {% else %}
     <a href="/users/signup"><button>Signup</button></a>
     <a href="/users/login"><button>Login</button></a>
    

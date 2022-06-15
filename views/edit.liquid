@@ -1,16 +1,11 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
     <article>
-
-
-     
-            
-                        
-                      
+        
                         
                      
         {{ product.title}}
-        <!-- review button ?_method=PUT"-->
+        <!-- review button -->
         <form id="addReview" action="/products/{{ product._id }}/reviews/{{ review._id }}/edit?_method=PUT" method="POST">
 
             <label >{{ review.username }}</label><br>
@@ -31,7 +26,10 @@
 
         </form>
 
-        <a href="/products/"><button>Back to Main</button></a>
+         <!-- Add to cart button -->
+        <form id="addReview" action="/products/{{ product._id }}/reviews" method="POST">
+
+        <a href="/products/cart"><button>Go to Your Cart</button></a>
     </article>
 </div>
 {% endblock %}

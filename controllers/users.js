@@ -84,7 +84,7 @@ router.post("/login", async (req, res) => {
     
     req.session.destroy((err) => {
       res.redirect("/products");
-      
+      req.session.loggedIn = false;
     });
     
   });
