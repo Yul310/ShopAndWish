@@ -17,6 +17,7 @@ const MongoStore = require("connect-mongo");
 const ProductRouter = require("./controllers/products")
 const reviewsRouter = require('./controllers/reviews')
 const UserRouter = require("./controllers/users")
+const CartRouter = require("./controllers/carts")
 // const weatherAlarmRouter = require("./controller/weatherAlarms")
 
 
@@ -53,6 +54,7 @@ app.use(
 app.use("/products",ProductRouter)
 app.use('/', reviewsRouter);
 app.use("/users",UserRouter);
+app.use("/carts",UserRouter);
 app.get("/", (req, res) => {
     res.render("index.liquid");
   });

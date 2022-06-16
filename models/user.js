@@ -13,13 +13,14 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  cart: {type:Array},
+  cart: [ { type: Schema.Types.ObjectId,
+    ref: 'Product'}],
   wishList: {type:Array},
   loggedIn: {type:Boolean, default:false}
 });
 
 // make fruit model
-const User = model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
 ///////////////////////////////////////////////////
 // Export Model

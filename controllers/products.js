@@ -3,9 +3,10 @@
 ////////////////////////////////////////
 const express = require("express"); // import express
 const Product = require('../models/product');
-
+const mongoose = require("mongoose")
 const Cart = require('../models/cart');
 const User = require("../models/user");
+const { Session } = require("express-session");
 
 
 /////////////////////////////////////////
@@ -17,14 +18,12 @@ const router = express.Router();
 // Router Middleware
 ////////////////////////////////////////
 // Authorization Middleware
+//-----I decided not to use this middleware so that users can see the products without logging in------//
 // router.use((req, res, next) => {
 //   if (req.session.loggedIn) {
 //     next();
-   
-
 //   } else {
-//     res.redirect("/users/login");
-   
+//     res.redirect("/users/login")   
 //   }
 // });
 
@@ -38,34 +37,12 @@ router.get("/", (req, res) => {
   Product.find({})
     .then((products) => {
       res.render("index", { products,logged });
-      console.log(products)
+      // console.log(products)
     })
     .catch((error) => {
       res.json({ error });
     });
 });
-
-//////////////////////////////////////////////
-// Add Review Route
-//////////////////////////////////////////////
-// router.post("/:id/reviews", (req, res) => {
-//   console.log("working")
-//   res.send("working")
-//   Product.findById(req.params.id)
-//   .then((product)=>{
-//     product.reviews.push(req.body);
-//     product.save();
-//     res.redirect(`/products/${product._id}`);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//     res.json({ error });
-//   });
-  
- 
-
-// })
-
 
 
 //////////////////////////////////////////////
@@ -74,15 +51,15 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const id = req.params.id;
   const logged =req.session.loggedIn;
-  Product.findById(id)
-    
+
+  Product.findById(id)  
     .then((product) => {
-      res.render("show", { product,logged });
-     
+      res.render("show", { product,logged});
+    
     })
-    .catch((error) => {
-      res.json({ error });
-    });
+    // .catch((error) => {
+    //   res.json({ error });
+    // });
 });
 
 //////////////////////////////////////////////
@@ -91,24 +68,52 @@ router.get("/:id", (req, res) => {
 
 // router.get("/:id/cart", (req,res) => {
 //   const Id = req.params.id;
-//   // const cart = new Cart(req.session.cart ? req.session.cart :{})
-//   Product.findById(Id, function(err, product) {
-    
-//     User.cart.append(product._id)
-//     // req.session.cart = cart;
-//     // console.log(req.session.cart)
-//   console.log(user)
-    
-//   })
-
-//   .catch((error) => {
-//     res.json({ error });
-//   });
+// 
 // })
 
 
 
 
+
+  router.post("/:id/cart",(req, res) => {
+    console.log("added")
+  const productId = req.params.id;
+  const uId = req.session.userId;
+  // console.log(productId)
+  // console.log(uId)
+  User.findOne({username:req.session.username},
+    function(err, user) {
+    
+    user.cart.push(productId)
+    user.save()
+    console.log(user);
+    // res.redirect("/products/:id/cartpage")
+  })
+  .catch((error) => {
+    // send error as json
+    console.log(error);
+    // res.json({ error });
+  });
+  
+  })
+
+
+
+router.get("/cartpage/:id",(req,res)=>{
+
+  const productId = req.params.id;
+  User.findOne({username:req.session.username}).populate('cart')
+  .exec(function (err, user) {
+    console.log(user.cart)
+    // Product.find({_id: {$in: user.cart}})
+    Product.find({_id: {$in: user.cart}} )
+    .then((products) => {
+      // console.log(products)
+    res.render("cart", { products});
+    // console.log(user)
+    })
+  })
+  })
 
 
 //////////////////////////////////////////

@@ -6,12 +6,11 @@ const mongoose = require("./connection");
 
 // pull schema and model from mongoose
 const { Schema, model } = mongoose;
-const Product = require('./product');
+
 
 // make Review schema
 const cartSchema = new Schema({
- totalPrice: Number,
- totalQty: Number,
+ userId :{type: Schema.Types.ObjectId,ref:'User'},
  products: [
   { type: Schema.Types.ObjectId,
     ref: 'Product'}

@@ -4,7 +4,7 @@
 const express = require("express");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
-
+const Product = require('../models/product');
 /////////////////////////////////////////
 // Create Route
 /////////////////////////////////////////
@@ -13,10 +13,13 @@ const router = express.Router();
 /////////////////////////////////////////
 // Routes
 /////////////////////////////////////////
-
+////////////////////////////////////////////////////////
 // The Signup Routes (Get => form, post => submit form)
+////////////////////////////////////////////////////////
 router.get("/signup", (req, res) => {
   res.render("user/signup.liquid");
+ 
+ 
 });
 
 router.post("/signup", async (req, res) => {
@@ -40,8 +43,9 @@ router.post("/signup", async (req, res) => {
 
 
   
-
+///////////////////////////////////////////////////////
 // The login Routes (Get => form, post => submit form)
+///////////////////////////////////////////////////////
 router.get("/login", (req, res) => {
   res.render("user/login.liquid");
 });
@@ -51,7 +55,7 @@ router.post("/login", async (req, res) => {
     const { username, password } = req.body;
     // search for the user
     User.findOne({ username })
-      .then(async (user) => {
+      .then(async (user) => { 
         // check if user exists
         if (user) {
           // compare password
@@ -62,6 +66,7 @@ router.post("/login", async (req, res) => {
            
             // redirect to fruits page if successful
             res.redirect("/products");
+           
           } else {
             // error if password doesn't match
             res.json({ error: "password doesn't match" });
@@ -88,9 +93,15 @@ router.post("/login", async (req, res) => {
       
     });
     
+    
   });
 
+///////////////////////////////////////////////////////
+// The cart Routes (Get => form, post => submit form)
+///////////////////////////////////////////////////////
+
   
+
 
 //////////////////////////////////////////
 // Export the Router

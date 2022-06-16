@@ -88,7 +88,10 @@
       
 
     </form>
-    <a href="/products/{{product.id}}/cart"><button>add to cart</button></a>
+    <form id="addReview" action="/products/{{ product._id }}/cart" method="POST">
+    <!-- <a href="/products/{{ product._id }}/cartpage"><button>add to cart</button></a> -->
+    <input id="addProduct" type="submit" value="Buy" />
+    </form>
     <a href="/products/"><button>Back to Main</button></a>
   </article>
 </div>

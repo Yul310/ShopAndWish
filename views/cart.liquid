@@ -1,8 +1,22 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
 
-
-
+    <div class ="catalogue">
+        {% for product in products %}
+        
+          <div class="products">
+         
+            <a href="/products/{{product._id}}">
+              
+                <img class="productImage"src="{{product.image}}" alt="{{product.title}} image" class="image-link" width="150px" height="150px">
+              
+                <p class = "productTitle">{{product.title}} </p>
+               
+            </a>
+      
+            <h4 class ="productPrice">Price: {{product.price}} </h4>
+      </div>
+            {% endfor %}
 
 
 </div>
