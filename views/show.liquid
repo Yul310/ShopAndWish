@@ -1,15 +1,16 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
   <article>
-    <img src="{{ product.image }}" alt="{{ product.title }}">
-    <h2> {{ product.title }} </h2>
+    <div class = "showProduct">
+    <img class="showImage"src="{{ product.image }}" alt="{{ product.title }}">
+    <h2 class="showPtitle"> {{ product.title }} </h2>
     <h4>
         Description: <a href=" {{ product.description }}">link to Amazon website</a> <br>
         Price: {{ product.price }}<br>
         rating: {{ product.rating }}<br>
         ratings_total: {{ product.ratings_total }}<br>
-        reviews:<br>
-
+        
+      </div>
 
     <table>
       <thead>

@@ -33,10 +33,10 @@ const router = express.Router();
 //////////////////////////////////////////////
 router.get("/", (req, res) => {
   console.log("working")
-  const logged =req.session.loggedIn;
+  const logged = req.session.loggedIn;
   Product.find({})
     .then((products) => {
-      res.render("index", { products,logged });
+      res.render("index", { products, logged });
       // console.log(products)
     })
     .catch((error) => {
@@ -50,16 +50,16 @@ router.get("/", (req, res) => {
 //////////////////////////////////////////////
 router.get("/:id", (req, res) => {
   const id = req.params.id;
-  const logged =req.session.loggedIn;
+  const logged = req.session.loggedIn;
 
-  Product.findById(id)  
+  Product.findById(id)
     .then((product) => {
-      res.render("show", { product,logged});
-    
+      res.render("show", { product, logged });
+
     })
-    // .catch((error) => {
-    //   res.json({ error });
-    // });
+  // .catch((error) => {
+  //   res.json({ error });
+  // });
 });
 
 //////////////////////////////////////////////
@@ -67,32 +67,32 @@ router.get("/:id", (req, res) => {
 //////////////////////////////////////////////
 
 
-  router.post("/:id/cart",(req, res) => {
-    console.log("added")
+router.post("/:id/cart", (req, res) => {
+  console.log("added")
   const productId = req.params.id;
   const uId = req.session.userId;
   // console.log(productId)
   // console.log(uId)
-  User.findOne({username:req.session.username},
-    function(err, user) {
-    
-    user.cart.push(productId)
-    user.save()
-    console.log(user);
-    // res.redirect("/products/:id/cartpage")
-  })
-  // .then((product) => {
-   
-  //   res.redirect("/products/:id/cartpage")
-    
-  // })
-  .catch((error) => {
-    // send error as json
-    console.log(error);
-    // res.json({ error });
-  });
-  
-  })
+  User.findOne({ username: req.session.username },
+    function (err, user) {
+
+      user.cart.push(productId)
+      user.save()
+      console.log(user);
+      // res.redirect("/products/:id/cartpage")
+    })
+    // .then((product) => {
+
+    //   res.redirect("/products/:id/cartpage")
+
+    // })
+    .catch((error) => {
+      // send error as json
+      console.log(error);
+      // res.json({ error });
+    });
+
+})
 
 
 //////////////////////////////////////////////
@@ -100,60 +100,62 @@ router.get("/:id", (req, res) => {
 //////////////////////////////////////////////
 
 
-router.get("/:id/cartpage",(req,res)=>{
+router.get("/:fakeId/cartpage", (req, res) => {
 
   // const productId = req.params.id;
-console.log(User.findOne({username:req.session.username}))
-  User.findOne({username:req.session.username}).populate('cart')
-  .exec(function (err, user) {
-    console.log(user.cart)
-    // Product.find({_id: {$in: user.cart}})
-    Product.find({_id: {$in: user.cart}} )
-    .then((products) => {
-      // console.log(products)
-    res.render("cart", { products});
-    // console.log(user)
+  console.log(User.findOne({ username: req.session.username }))
+  User.findOne({ username: req.session.username }).populate('cart')
+    .exec(function (err, user) {
+
+      // Product.find({_id: {$in: user.cart}})
+      Product.find({ _id: { $in: user.cart } })
+        .then((products, user) => {
+
+          res.render("cart", { products }),
+            user
+          // console.log(user)
+        })
     })
-  })
-  })
+})
 
 
 
 //////////////////////////////////////////////
 // Cart Route - delete- push an item to the cart
 //////////////////////////////////////////////
-router.put("/:product._id/cart", (req, res) => {
+router.delete("/:id/:uid/cart", (req, res) => {
   // get the id from params
   const id = req.params.id;
-  console.log("ji")
-//   User.findOne({username:req.session.username})
-  
-//   .then((user) => {
-//     console.log(user)
-//     user.cart.deleteOne({_id:id})
-    
- 
-//     user.save(err => {
-//      if (err) {
-//        console.log(err);
-//      }
-//    })
- 
-//   })
+  const uid = req.params.uid;
+  Product.findByIdAndRemove(id)
+  User.findById(uid)
+  console.log(User.findById(uid))
+  // .then((user) => {
+  //   console.log(user.cart)
+  //   user.cart.deleteOne({_id:id})
 
-//   .then((product) => {
-//    // redirect to main page after updating
-//    res.redirect(`/products/${req.params.id}`)
-//    // res.redirect("/products/62a7e10c43da5dc9301bc1fb");
-//  })
-//  // send error as json
-//  .catch((error) => {
-//    console.log(error);
-//    res.json({ error });
-//  });
- 
- 
- });
+
+  //   user.save(err => {
+  //    if (err) {
+  //      console.log(err);
+  //    }
+  //  })
+
+  // })
+
+  //   .then((product) => {
+  //    // redirect to main page after updating
+  //   //  res.redirect(`/:fakeId/cartpage`)
+  //    res.redirect("/products/ç/cartpage");
+  //  })
+  //  // send error as json
+  //  .catch((error) => {
+  //    console.log(error);
+  //    res.json({ error });
+  //  });
+
+
+});
 
 
 

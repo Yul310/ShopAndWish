@@ -9,7 +9,10 @@
   <!-- Milligram CSS for Some Default Styling -->
   <!-- Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Roboto:ital@1&display=swap" rel="stylesheet">
   <!-- CSS Reset -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
 
@@ -23,12 +26,16 @@
   <!-- OUR CSS AND JS -->
   <link rel="stylesheet" href="/styles.css" />
   <script src="/server.js" defer></script>
+
+
+
+  
 </head>
 
 <body>
   <header>
     <a href="/products">
-    <h1>Shop & Wish</h1>
+    <h1 class="shopTitle">Wish & Shop</h1>
   </a>
   </header>
   <!-- navigation items -->
@@ -47,7 +54,7 @@
       {% if logged == true %}
       <a class="leftNav" href="/products/wishlists"><button>WishList</button></a>
       {% endif%}
-      <a class="cartIcon" href="/products/:id/cartpage"><button>Cart</button></a>
+      <a class="cartIcon" href="/products/ç/cartpage"><button>Cart</button></a>
     </div>
   </nav>
 
