@@ -47,7 +47,7 @@
       {% if logged == true %}
       <a class="leftNav" href="/products/wishlists"><button>WishList</button></a>
       {% endif%}
-      <a class="cartIcon" href="/products/{{product._id}}cartpage"><button>Cart{{user.cart.length}}</button></a>
+      <a class="cartIcon" href="/products/:id/cartpage"><button>Cart</button></a>
     </div>
   </nav>
 
