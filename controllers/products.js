@@ -122,7 +122,7 @@ console.log(User.findOne({username:req.session.username}))
 //////////////////////////////////////////////
 // Cart Route - delete- push an item to the cart
 //////////////////////////////////////////////
-router.delete("/:product._id/cart", (req, res) => {
+router.put("/:product._id/cart", (req, res) => {
   // get the id from params
   const id = req.params.id;
   console.log("ji")

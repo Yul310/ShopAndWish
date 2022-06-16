@@ -29,8 +29,8 @@
                         <h4 class="productPrice">Price: {{product.price}} </h4>
                     </td>
                     <td>
-                     
-                        <form action="/products/{{ product._id}}/cart?_method=DELETE" method="POST">
+                        <!-- <form action="/products/{{ product._id}}/cart?_method=DELETE" method="POST"> -->
+                        <form action="/products/{{ product._id}}/cart" method="POST">
                        
                             <input type="submit" value="Delete" />
                         </form>
