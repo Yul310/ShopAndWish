@@ -27,6 +27,27 @@ const router = express.Router();
 //   }
 // });
 
+//////////////////////////////////////////////
+// Cart Route - get - push an item to the cart
+//////////////////////////////////////////////
+
+
+router.get("/cartpage", (req, res) => {
+
+  // const productId = req.params.id;
+  
+  User.findOne({ username: req.session.username }).populate('cart')
+    .then((user) => {
+      // Product.find({_id: {$in: user.cart}})
+      Product.find({ _id: { $in: user.cart } })
+        .then((products) => {
+          console.log(user)
+          res.render("cart", { products, user })
+
+        })
+    })
+})
+
 
 //////////////////////////////////////////////
 // Index Route
@@ -95,28 +116,8 @@ router.post("/:id/cart", (req, res) => {
 })
 
 
-//////////////////////////////////////////////
-// Cart Route - get - push an item to the cart
-//////////////////////////////////////////////
 
 
-router.get("/:fakeId/cartpage", (req, res) => {
-
-  // const productId = req.params.id;
-  console.log(User.findOne({ username: req.session.username }))
-  User.findOne({ username: req.session.username }).populate('cart')
-    .exec(function (err, user) {
-
-      // Product.find({_id: {$in: user.cart}})
-      Product.find({ _id: { $in: user.cart } })
-        .then((products, user) => {
-
-          res.render("cart", { products }),
-            user
-          // console.log(user)
-        })
-    })
-})
 
 
 
@@ -127,13 +128,16 @@ router.delete("/:id/:uid/cart", (req, res) => {
   // get the id from params
   const id = req.params.id;
   const uid = req.params.uid;
-  Product.findByIdAndRemove(id)
+  // Product.findByIdAndRemove(id)
   User.findById(uid)
-  console.log(User.findById(uid))
-  // .then((user) => {
-  //   console.log(user.cart)
-  //   user.cart.deleteOne({_id:id})
+    // console.log(User.findById(uid))
+    .then((user) => {
+      user.cart.pull(id)
+      user.save()
+      res.redirect("/products/cartpage");
 
+     
+    })
 
   //   user.save(err => {
   //    if (err) {

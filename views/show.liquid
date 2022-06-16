@@ -9,10 +9,10 @@
         Price: {{ product.price }}<br>
         rating: {{ product.rating }}<br>
         ratings_total: {{ product.ratings_total }}<br>
-        
+      </h4> 
       </div>
-
-    <table>
+<div class = "reviewBody" >
+    <table class ="reviewTable">
       <thead>
         <tr>
           <th>Date</th>
@@ -24,9 +24,11 @@
       </thead>
       {% if product.reviews.length == 0 %}
       <tr>
-        <td>
-          No datayet. Please add your review.
-        </td>
+        <td>No reivew yet.</td>
+        <td>No reivew yet.</td>
+        <td>No reivew yet.</td>
+        <td>No reivew yet.</td>
+        <td>No reivew yet.</td>
       </tr>
       {% else %}
       {% for review in product.reviews %}
@@ -47,8 +49,9 @@
       {% endif %}
     </table>
 
+ 
 
-    </h4>
+   
 
 
 
@@ -64,36 +67,40 @@
 
     <!-- review button -->
     <form id="addReview" action="/products/{{ product._id }}/reviews" method="POST">
-      <label>Review:</label>
+      <label>Review:</label><br>
       {% if logged == true %}
-      <textarea name="content" placeholder="Leave your review here"></textarea>
+      <textarea class = "reviewText" name="content" placeholder="Leave your review here"></textarea>
       {%else%}
-      <textarea name="content" placeholder="Please log-In to leave your review."></textarea>
+      <textarea class = "reviewText" name="content" placeholder="Please log-In to leave your review."></textarea>
       {% endif%}
-
-      <label>Rating:</label>
-      <select name="rating">
+      <br>
+      <label>Rating:</label><br>
+      <select name="rating" placeholder = "rating">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5" selected>5</option>
       </select>
-
-     
-      <input id="addReview" type="submit" value="Add review" />
-      
-
-
-
-      
-
+      <br>
+      <input class = "addReviewB" id="addReviewB" type="submit" value="Add " />
     </form>
+
+
+
+    
+
+
     <form id="addReview" action="/products/{{ product._id }}/cart" method="POST">
     <!-- <a href="/products/{{ product._id }}/cartpage"><button>add to cart</button></a> -->
     <input id="addProduct" type="submit" value="Buy" />
     </form>
     <a href="/products/"><button>Back to Main</button></a>
   </article>
+
+
+</div>
+
+
 </div>
 {% endblock %}

@@ -154,8 +154,50 @@ button {
 }
 
 .showPtitle {
+    width: 600px;
     font-size: 24px;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     margin: 60px 20px 30px 20px;
+}
+
+
+.reviewTable{
+
+    width: 1300px
+}
+
+.reviewBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 20px auto;
+}
+#addReview{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px auto;
+}
+
+.reviewText{
+    width:700px;
+    height:200px;
+}
+
+
+
+.addReviewB{
+    font-size: small;
+    width: 800px;
+    /* grid-area: right; */
+    /* position:relative; top:25px; left: 50%; */
+}
+
+.cart{
+
+    width: 900px;
 }

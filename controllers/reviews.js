@@ -65,14 +65,19 @@ router.put("/products/:id/reviews/:reviewId/edit", (req, res) => {
   const rid = req.params.reviewId;
   // get the data from the request body
   Product.findById(id)
+  // Product.findByIdAndUpdate(id,{$inc:{ratings_total:1}},{new:true,strict:false})
     .then((product) => {
       // console.log(req.body)
       // console.log(product)
       //find the review in the array and update it
+    
       const review = product.reviews.find(review => review._id == rid)
       review.content = req.body.content;
       review.rating = req.body.rating;
       console.log(review)
+      
+      product.ratings_total += 1;
+      product.rating = (rating + review.rating)/product.ratings_total;
       console.log(product)
      
       product.save(err => {
