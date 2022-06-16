@@ -44,8 +44,6 @@ db.on("open", (req,res) => {
                 console.log(Product);
                 
             })
-      
-  
             .catch((error) => {
                       console.log(error);
                       db.close();

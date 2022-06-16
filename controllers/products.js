@@ -4,7 +4,7 @@
 const express = require("express"); // import express
 const Product = require('../models/product');
 const mongoose = require("mongoose")
-const Cart = require('../models/cart');
+// const Cart = require('../models/cart');
 const User = require("../models/user");
 const { Session } = require("express-session");
 
@@ -63,16 +63,8 @@ router.get("/:id", (req, res) => {
 });
 
 //////////////////////////////////////////////
-// Cart Route
+// Cart Route - post - push an item to the cart
 //////////////////////////////////////////////
-
-// router.get("/:id/cart", (req,res) => {
-//   const Id = req.params.id;
-// 
-// })
-
-
-
 
 
   router.post("/:id/cart",(req, res) => {
@@ -89,6 +81,11 @@ router.get("/:id", (req, res) => {
     console.log(user);
     // res.redirect("/products/:id/cartpage")
   })
+  // .then((product) => {
+   
+  //   res.redirect("/products/:id/cartpage")
+    
+  // })
   .catch((error) => {
     // send error as json
     console.log(error);
@@ -98,10 +95,15 @@ router.get("/:id", (req, res) => {
   })
 
 
+//////////////////////////////////////////////
+// Cart Route - get - push an item to the cart
+//////////////////////////////////////////////
 
-router.get("/cartpage/:id",(req,res)=>{
 
-  const productId = req.params.id;
+router.get("/:id/cartpage",(req,res)=>{
+
+  // const productId = req.params.id;
+console.log(User.findOne({username:req.session.username}))
   User.findOne({username:req.session.username}).populate('cart')
   .exec(function (err, user) {
     console.log(user.cart)
@@ -114,6 +116,46 @@ router.get("/cartpage/:id",(req,res)=>{
     })
   })
   })
+
+
+
+//////////////////////////////////////////////
+// Cart Route - delete- push an item to the cart
+//////////////////////////////////////////////
+// router.delete("/:product._id/cart", (req, res) => {
+//   // get the id from params
+//   const id = req.params.id;
+//   console.log("ji")
+//   User.findOne({username:req.session.username})
+  
+//   .then((user) => {
+//     console.log(user)
+//     user.cart.deleteOne({_id:id})
+    
+ 
+//     user.save(err => {
+//      if (err) {
+//        console.log(err);
+//      }
+//    })
+ 
+//   })
+
+//   .then((product) => {
+//    // redirect to main page after updating
+//    res.redirect(`/products/${req.params.id}`)
+//    // res.redirect("/products/62a7e10c43da5dc9301bc1fb");
+//  })
+//  // send error as json
+//  .catch((error) => {
+//    console.log(error);
+//    res.json({ error });
+//  });
+ 
+ 
+//  });
+
+
 
 
 //////////////////////////////////////////

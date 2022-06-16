@@ -1,23 +1,48 @@
 {% layout "layout.liquid" %} {% block content %}
 <div>
 
-    <div class ="catalogue">
-        {% for product in products %}
-        
-          <div class="products">
-         
-            <a href="/products/{{product._id}}">
-              
-                <img class="productImage"src="{{product.image}}" alt="{{product.title}} image" class="image-link" width="150px" height="150px">
-              
-                <p class = "productTitle">{{product.title}} </p>
-               
-            </a>
-      
-            <h4 class ="productPrice">Price: {{product.price}} </h4>
-      </div>
+    <div class="catalogue">
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            {% for product in products %}
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="/products/{{product._id}}">
+                            <img class="productImage" src="{{product.image}}" alt="{{product.title}} image"
+                                class="image-link" width="150px" height="150px">
+                        </a>
+                    </td>
+
+                    <td>
+                        <p class="productTitle">{{product.title}} </p>
+                    </td>
+
+                    <td>
+                        <h4 class="productPrice">Price: {{product.price}} </h4>
+                    </td>
+                    <!-- <td>
+                     
+                        <form action="/products/{{ product._id}}/cart?_method=DELETE" method="POST">
+                       
+                            <input type="submit" value="Delete" />
+                        </form>
+                    </td> -->
+
+                </tr>
+            </tbody>
             {% endfor %}
 
 
-</div>
-{% endblock %}
+
+    </div>
+    <br>
+    <h3>total:</h3>
+    {% endblock %}

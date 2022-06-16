@@ -10,14 +10,14 @@ const mongoose = require("./models/connection")
 // const fetch = require('node-fetch')
 const path = require("path")
 const Product = require('./models/product')
-const Cart = require('./models/cart');
+// const Cart = require('./models/cart');
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 //Router
 const ProductRouter = require("./controllers/products")
 const reviewsRouter = require('./controllers/reviews')
 const UserRouter = require("./controllers/users")
-const CartRouter = require("./controllers/carts")
+// const CartRouter = require("./controllers/carts")
 // const weatherAlarmRouter = require("./controller/weatherAlarms")
 
 
