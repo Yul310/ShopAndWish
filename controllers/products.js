@@ -102,15 +102,14 @@ router.post("/:id/cart", (req, res) => {
   // console.log(uId)
   User.findOne({ username: req.session.username },
     function (err, user) {
-
       user.cart.push(productId)
       user.save()
       console.log(user);
-      // res.redirect("/products/:id/cartpage")
+      res.redirect("/products/cartpage")
     })
     // .then((product) => {
 
-    //   res.redirect("/products/:id/cartpage")
+    //   res.redirect("/products/cartpage")
 
     // })
     .catch((error) => {
@@ -151,6 +150,27 @@ router.delete("/:id/:uid/cart", (req, res) => {
     });
 
 
+});
+
+
+
+//////////////////////////////////////////////
+// Search Route
+//////////////////////////////////////////////
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  const logged = req.session.loggedIn;
+
+  Product.findById(id)
+    .then((product) => {
+      // const user = User.findOne({ username: req.session.username })
+      // const qty = user.cart.length
+      res.render("show", { product, logged });
+
+    })
+  // .catch((error) => {
+  //   res.json({ error });
+  // });
 });
 
 

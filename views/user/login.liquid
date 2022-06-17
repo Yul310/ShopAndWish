@@ -1,9 +1,11 @@
 {% layout "layout.liquid" %}
 {% block content %}
-      <div>
+
+  <div class = "loginBody">
+      <div class = "login">
         <form action="/users/login" method="post">
           <fieldset>
-            <legend>User Login</legend>
+            <legend> <h3 class ="loginTitle"> Log-In </h3></legend>
             <label
               >USERNAME: <input type="text" name="username" required />
             </label>
@@ -14,4 +16,5 @@
           </fieldset>
         </form>
       </div>
+    </div>
 {% endblock %}
