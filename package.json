@@ -34,5 +34,8 @@
     "node-fetch": "^3.2.6",
     "rowdy-logger": "^1.0.2",
     "xyz": "^4.0.0"
-  }
+  },
+  "engines": {
+    "node": "18.0.0"
+    }
 }
