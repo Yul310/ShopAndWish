@@ -29,27 +29,34 @@
 
 
 
-  
+
 </head>
 
 <body>
-  <header>
-    <a href="/products">
-    <h1 class="shopTitle">Wish & Shop</h1>
-  </a>
+  <div id="titleBlock">
+  <header >
+    <a  href="/products">
+      <h1 class="shopTitle">Wish & Shop</h1>
+    </a>
+
+    {% if logged == true %}
+    <h3>Welcome, {{username}}!</h3>
+    {% endif%}
+
+    
   </header>
   <!-- navigation items -->
   <nav id="nav">
 
     <div class="navL">
-    {% if logged == true %}
-    <a class="leftNav" href="/products/myInfo"><button>My Info</button></a>
-    <a href="/users/logout"><button>Logout</button></a>
-    {%else%}
-    <a href="/users/signup"><button>Signup</button></a>
-    <a href="/users/login"><button>Login</button></a>
-    {% endif%}
-  </div>
+      {% if logged == true %}
+      <a class="leftNav" href="/products/myInfo"><button>My Info</button></a>
+      <a href="/users/logout"><button>Logout</button></a>
+      {%else%}
+      <a href="/users/signup"><button>Signup</button></a>
+      <a href="/users/login"><button>Login</button></a>
+      {% endif%}
+    </div>
     <div class="navR">
       {% if logged == true %}
       <a class="leftNav" href="/products/wishlists"><button>WishList</button></a>
@@ -57,7 +64,7 @@
       <a class="cartIcon" href="/products/cartpage"><button>Cart</button></a>
     </div>
   </nav>
-
+</div>
   <main>{% block content %}My default content{% endblock %}</main>
 
   <footer></footer>

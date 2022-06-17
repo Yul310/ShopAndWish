@@ -1,6 +1,6 @@
 {% layout "layout.liquid" %} {% block content %}
-<div>
-
+<div class="cartBody">
+   
     <div class="cart">
         <table>
             <thead>
@@ -11,7 +11,9 @@
                     <th>Delete</th>
                 </tr>
             </thead>
+            {%assign a = 0%}
             {% for product in products %}
+            
             <tbody>
                 <tr>
                     <td>
@@ -29,7 +31,7 @@
                         <h4 class="productPrice">Price: {{product.price}} </h4>
                     </td>
                     <td>
-                        <form action="/products/{{ product._id}}/{{ user._id}}/cart?_method=DELETE" method="POST">
+                        <form action="/products/{{ product._id}}/{{user._id}}/cart?_method=DELETE" method="POST">
                         <!-- <form action="/products/{{ product._id}}/cart" method="POST"> -->
                        
                             <input type="submit" value="Delete" />
@@ -38,11 +40,20 @@
 
                 </tr>
             </tbody>
+
+            {% assign a = a | plus:product.price %}
+            
             {% endfor %}
 
-
+            <h3 class="Total Price">Total Price <p class="cartText">${{a|round:2}}</p></h3>
+            <h3 class="Total Price">Product QTY <p class="cartText">{{user.cart.length}}</p> </h3>
 
     </div>
     <br>
-    <h3>total:</h3>
+    
+     
+
+   
+
+
     {% endblock %}

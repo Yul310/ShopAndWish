@@ -1,41 +1,45 @@
 body {
-    margin: 10px 20px auto;
+    margin: 10px 0px auto;
 
+}
+#titleBlock{
+    background-color:rgb(248, 248, 248);
+    text-align: center;
 }
 
 #nav {
     display: flex;
     /* flex-direction: row-reverse; */
     justify-content: space-between;
-    margin: 10px 10px auto;
-
-    /* border-top: 2px solid #9b4dca; */
-    /* border-bottom: 1px solid #9b4dca; */
-
+    margin: 30px 0px auto;
+    align-items: center;
+    background-color:rgb(248, 248, 248);
+    /* border-top: 2px solid #9b4dca;
+    border-bottom: 2px solid #9b4dca; */
+    height:100px;
 }
 
 .navL {
-    margin: 0px 5px 0px 5px auto;
+    margin: 0px 40px 0px 40px;
     justify-self: flex-start;
 
 }
 
 .navR {
-    margin: 0px 5px 0px 5px auto;
+    margin: 0px 40px 0px 40px;
     justify-self: flex-end;
 
 }
 
 .catalogue {
-
+    width: 80%;
     margin: 100px 100px 100px 100px;
     display: grid;
+    /* grid-template-areas: "a a a a a"; */
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    /* grid-auto-rows: 500px; */
-    /*display: grid;
-    grid-template-columns: 30% 30% 30% ;
-    grid-template-rows: 50% 50%; */
+    /* grid-auto-columns: minmax(20%, 80vmax);;; */
+    gap: 0.5%;
+   
     /* display: flex;
     justify-content: flex-start;
     flex-direction: row;
@@ -67,7 +71,7 @@ button {
     height: 400px;
     margin: 50px 50px auto;
     /* background-color: whitesmoke; */
-
+    
     text-align: center;
 }
 
@@ -89,13 +93,14 @@ button {
 .shopTitle {
     font-family: 'Fascinate', cursive;
     font-size: 70px;
+   
+
 }
 
 .products {
-    border: 3px solid #9b4dca;
+    /* border: 3px solid #9b4dca; */
     border-radius: 20px;
-
-
+    box-shadow: 2px 2px 5px  #9b4dca;
 
 }
 
@@ -200,4 +205,21 @@ button {
 .cart{
 
     width: 900px;
+}
+
+.cartBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 20px auto;
+    text-align: center;
+}
+
+.cartText{
+    color: #9b4dca;
+    font-weight: 600;
+    font-size: 32px;
+
+
 }

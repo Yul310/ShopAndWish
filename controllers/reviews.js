@@ -76,9 +76,9 @@ router.put("/products/:id/reviews/:reviewId/edit", (req, res) => {
       review.rating = req.body.rating;
       console.log(review)
       
-      product.ratings_total += 1;
-      product.rating = (rating + review.rating)/product.ratings_total;
-      console.log(product)
+      // product.ratings_total += 1;
+      // product.rating = (rating + review.rating)/product.ratings_total;
+      // console.log(product)
      
       product.save(err => {
         if (err) {

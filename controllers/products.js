@@ -33,16 +33,17 @@ const router = express.Router();
 
 
 router.get("/cartpage", (req, res) => {
-
+  const username = req.session.username
   // const productId = req.params.id;
-  
+  const logged = req.session.loggedIn;
   User.findOne({ username: req.session.username }).populate('cart')
     .then((user) => {
       // Product.find({_id: {$in: user.cart}})
       Product.find({ _id: { $in: user.cart } })
         .then((products) => {
           console.log(user)
-          res.render("cart", { products, user })
+          qty = user.cart.length
+          res.render("cart", { products, user, logged, username, qty })
 
         })
     })
@@ -54,10 +55,13 @@ router.get("/cartpage", (req, res) => {
 //////////////////////////////////////////////
 router.get("/", (req, res) => {
   console.log("working")
+  const username = req.session.username
   const logged = req.session.loggedIn;
+ 
   Product.find({})
     .then((products) => {
-      res.render("index", { products, logged });
+
+      res.render("index", { products, logged, username });
       // console.log(products)
     })
     .catch((error) => {
@@ -75,6 +79,8 @@ router.get("/:id", (req, res) => {
 
   Product.findById(id)
     .then((product) => {
+      // const user = User.findOne({ username: req.session.username })
+      // const qty = user.cart.length
       res.render("show", { product, logged });
 
     })
@@ -134,29 +140,15 @@ router.delete("/:id/:uid/cart", (req, res) => {
     .then((user) => {
       user.cart.pull(id)
       user.save()
+
       res.redirect("/products/cartpage");
 
-     
+
     })
-
-  //   user.save(err => {
-  //    if (err) {
-  //      console.log(err);
-  //    }
-  //  })
-
-  // })
-
-  //   .then((product) => {
-  //    // redirect to main page after updating
-  //   //  res.redirect(`/:fakeId/cartpage`)
-  //    res.redirect("/products/ç/cartpage");
-  //  })
-  //  // send error as json
-  //  .catch((error) => {
-  //    console.log(error);
-  //    res.json({ error });
-  //  });
+    .catch((error) => {
+      console.log(error);
+      res.json({ error });
+    });
 
 
 });
