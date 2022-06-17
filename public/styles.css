@@ -84,6 +84,7 @@ button {
     display: grid;
     grid-template-columns: auto auto;
     gap: 1rem;
+   
 }
 
 #addReview input[type="submit"] {
@@ -195,11 +196,19 @@ button {
     height:200px;
 }
 
+.newReviewSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px auto;
+    text-align: center;
 
+}
 
 .addReviewB{
     font-size: small;
-    width: 800px;
+    width: 200px;
     /* grid-area: right; */
     /* position:relative; top:25px; left: 50%; */
 }

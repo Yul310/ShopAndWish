@@ -64,9 +64,9 @@
           <input type="submit" value="Delete" />
           
         </form> -->
-
+<section class="newReviewSection">
     <!-- review button -->
-    <form id="addReview" action="/products/{{ product._id }}/reviews" method="POST">
+    <form id="addReviewG" action="/products/{{ product._id }}/reviews" method="POST">
       <label>Review:</label><br>
       {% if logged == true %}
       <textarea class = "reviewText" name="content" placeholder="Leave your review here"></textarea>
@@ -83,7 +83,7 @@
         <option value="5" selected>5</option>
       </select>
       <br>
-      <input class = "addReviewB" id="addReviewB" type="submit" value="Add " />
+      <input class = "addReviewB"  type="submit" value="Add Review " />
     </form>
 
 
@@ -91,16 +91,16 @@
     
 
 
-    <form id="addReview" action="/products/{{ product._id }}/cart" method="POST">
+    <form id="addReviewG" action="/products/{{ product._id }}/cart" method="POST">
     <!-- <a href="/products/{{ product._id }}/cartpage"><button>add to cart</button></a> -->
-    <input id="addProduct" type="submit" value="Buy" />
+    <input class = "addReviewB" id="addProduct" type="submit" value="Buy" />
     </form>
-    <a href="/products/"><button>Back to Main</button></a>
+    <a class = "addReviewB" href="/products/"><button>Back to Main</button></a>
   </article>
 
 
 </div>
-
+</section>
 
 </div>
 {% endblock %}
