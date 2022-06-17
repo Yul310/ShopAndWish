@@ -76,12 +76,12 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const id = req.params.id;
   const logged = req.session.loggedIn;
-
+  const username = req.session.username
   Product.findById(id)
     .then((product) => {
       // const user = User.findOne({ username: req.session.username })
       // const qty = user.cart.length
-      res.render("show", { product, logged });
+      res.render("show", { product, logged,username });
 
     })
   // .catch((error) => {

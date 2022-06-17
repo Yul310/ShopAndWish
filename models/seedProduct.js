@@ -14,14 +14,6 @@ require('dotenv').config
 db.on("open", (req,res) => {
 
 
-  // Run any database queries in this function
-//   const startFruits = [
-//     { name: "Orange", color: "orange", readyToEat: false },
-//     { name: "Grape", color: "purple", readyToEat: false },
-//     { name: "Banana", color: "orange", readyToEat: false },
-//     { name: "Strawberry", color: "red", readyToEat: false },
-//     { name: "Coconut", color: "brown", readyToEat: false },
-//   ];
 
  
   Product.deleteMany({});
@@ -35,6 +27,7 @@ db.on("open", (req,res) => {
         // From the complicate Amazon API, I had to extract information I need and change the name of fields.
                 const amazonData =jsonData.bestsellers;
                 for(i=0;i<amazonData.length;i++){
+                  //change the name of the fields
                   amazonData[i].description = amazonData[i].link;
                   amazonData[i].price =amazonData[i].price.value;
                   amazonData[i].category =amazonData[i].current_category.name

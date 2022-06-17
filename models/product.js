@@ -40,12 +40,6 @@ const productSchema = new Schema({
   },
   reviews: [reviewSchema]
 
-  // rating:{
-  //     rate:Number,
-  //     count:Number
-  // }
-
-
 });
 
 
