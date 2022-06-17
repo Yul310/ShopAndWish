@@ -71,7 +71,7 @@ app.listen(PORT || 4000, () => {
 
 
 
-//seed data testing place
+//seed data testing place//
 // app.get("/seed", (req, res) => {
     
 //      const requestURL = `https://api.rainforestapi.com/request?api_key=${process.env.AMAZON_BEST_API_KEY}&type=bestsellers&url=https://www.amazon.com/s/zgbs/pc/516866`
