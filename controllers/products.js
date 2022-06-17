@@ -107,11 +107,6 @@ router.post("/:id/cart", (req, res) => {
       console.log(user);
       res.redirect("/products/cartpage")
     })
-    // .then((product) => {
-
-    //   res.redirect("/products/cartpage")
-
-    // })
     .catch((error) => {
       // send error as json
       console.log(error);
@@ -119,11 +114,6 @@ router.post("/:id/cart", (req, res) => {
     });
 
 })
-
-
-
-
-
 
 
 //////////////////////////////////////////////

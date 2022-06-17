@@ -207,6 +207,7 @@ button {
 }
 
 .addReviewB{
+    margin-top: 50px;
     font-size: small;
     width: 200px;
     /* grid-area: right; */
@@ -264,4 +265,13 @@ button {
     color: #9b4dca;
     font-weight: 600;
     font-size: 32px;
+}
+
+.reviewInput{
+    width: 300px;
+   
+    margin: 10px 10px auto;
+    text-align: center;
+
+
 }
