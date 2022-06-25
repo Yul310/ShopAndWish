@@ -62,8 +62,8 @@ app.get("/", (req, res) => {
 //////////////////////////////////////////////
 // Server Listener
 //////////////////////////////////////////////
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
+const PORT = process.env.PORT;
+app.listen(PORT || 4000, () => {
     console.log(`Now Listening on port ${PORT}`)
     //   routesReport.print()
 });
