@@ -76,7 +76,7 @@ router.put("/products/:id/reviews/:reviewId/edit", (req, res) => {
     
       //find the review in the array and update it
 
-      const review = product.reviews.find(review => review._id == rid)
+      const review = product.reviews.find((review )=> {return review._id == rid})
       review.content = req.body.content;
       review.rating = req.body.rating;
 
@@ -124,7 +124,7 @@ router.delete("/products/:id/reviews/:reviewId", (req, res) => {
       // console.log(req.body)
       // console.log(product)
       //find the review in the array and update it
-      const review = product.reviews.find(review => review._id == rid)
+      const review = product.reviews.find((review )=> {return review._id == rid})
       console.log(review._id)
       review.remove()
       console.log(product)
